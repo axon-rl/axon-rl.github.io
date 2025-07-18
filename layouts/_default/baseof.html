@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    {{ $style := resources.Get "css/styles.css" | minify }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: inherit;">💎 Axon-RL</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gem/">GEM</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    {{ block "main" . }}{{ end }}
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; {{ now.Format "2006" }} Axon-RL. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="{{ .Site.Params.github_url }}" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    
+    {{ $typingScript := resources.Get "js/typing-animation.js" | minify }}
+    {{ $themeScript := resources.Get "js/theme-toggle.js" | minify }}
+    {{ $smoothScrollScript := resources.Get "js/smooth-scroll.js" | minify }}
+    {{ $codeCopyScript := resources.Get "js/code-copy.js" | minify }}
+    <script src="{{ $typingScript.RelPermalink }}"></script>
+    <script src="{{ $themeScript.RelPermalink }}"></script>
+    <script src="{{ $smoothScrollScript.RelPermalink }}"></script>
+    <script src="{{ $codeCopyScript.RelPermalink }}"></script>
+</body>
+</html>

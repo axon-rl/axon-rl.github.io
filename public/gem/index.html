@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axon-RL - Wiring General Intelligence Through Reinforcement Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: inherit;">💎 Axon-RL</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gem/">GEM</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    
+<div class="gem-layout">
+    <aside class="gem-sidebar">
+        <h3>🚀 Getting Started</h3>
+        <ul>
+            <li><a href="/gem/">Getting Started</a></li>
+            <li><a href="/gem/#installation">Installation</a></li>
+            <li><a href="/gem/#quick-start">Quick Start</a></li>
+        </ul>
+
+        <h3>🌍 Environments</h3>
+        <ul>
+            <li><a href="/gem/environments/">Environment Overview</a></li>
+            <li><a href="/gem/environments/#games">Games</a></li>
+            <li><a href="/gem/environments/#math">Math</a></li>
+            <li><a href="/gem/environments/#code">Code</a></li>
+            <li><a href="/gem/environments/#question-answering">Question-Answering</a></li>
+        </ul>
+
+        <h3>🛠️ Tools & Features</h3>
+        <ul>
+            <li><a href="/gem/tools/">Tools Overview</a></li>
+            <li><a href="/gem/tools/#python-tool">Python Tool</a></li>
+            <li><a href="/gem/tools/#search-tool">Search Tool</a></li>
+            <li><a href="/gem/tools/#wrappers">Wrappers</a></li>
+            <li><a href="/gem/tools/#vectorization">Vectorization</a></li>
+        </ul>
+
+        <h3>🧱 Advanced</h3>
+        <ul>
+            <li><a href="/gem/advanced/">Advanced Overview</a></li>
+            <li><a href="/gem/advanced/#custom-environments">Custom Environments</a></li>
+            <li><a href="/gem/advanced/#training-agents">Training Agents</a></li>
+        </ul>
+    </aside>
+
+    <main class="gem-content">
+        <h1>🚀 Getting Started</h1>
+
+        
+
+        <div class="gem-article">
+            <p>GEM is a diverse collection of environments for training LLM agents in the era of experience. The library includes Math, Code, general reasoning, and question-answering environments, as well as a suite of games (Mastermind, Minesweeper, Hangman, etc). GEM also features fully integrated python and search tool use.</p>
+<div class="gem-callout">
+    <strong>New to GEM?</strong> Start with our Quick Start guide below to get up and running in minutes.
+</div>
+<h2 id="installation">Installation</h2>
+<p>TO BE ADDED</p>
+<h2 id="quick-start">Quick Start</h2>
+<p>Here&rsquo;s a simple example to get you started. The interface closely follows <a href="https://gymnasium.farama.org/">Gym</a> and other popular RL environment suites.</p>
+<p>Environments can be initialized with <code>make()</code> (or <code>make_vec()</code>  for parallelization) and each environment has <code>Env.reset()</code>, <code>Env.step()</code> and <code>Env.sample_random_action()</code> functions.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gem</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Initialize the environment</span>
+</span></span><span class="line"><span class="cl"><span class="n">env</span> <span class="o">=</span> <span class="n">make</span><span class="p">(</span><span class="s2">&#34;ta:GuessTheNumber-v0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Reset the environment to generate the first observation</span>
+</span></span><span class="line"><span class="cl"><span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">sample_random_action</span><span class="p">()</span> <span class="c1"># insert policy here</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># apply action and receive next observation, reward</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># and whether the episode has ended</span>
+</span></span><span class="line"><span class="cl">    <span class="n">observation</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># If the episode has ended then reset to start a new episode</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</span></span></code></pre></div><div class="gem-callout">
+    Please see further documentation for details of <strong>vectorized environments</strong>, <strong>automated resetting</strong>, <strong>different observation/chat templates</strong>, and <strong>integrated tools</strong>.
+</div>
+<h2 id="training-an-agent">Training an agent</h2>
+<p>GEM includes single file examples for training an LLM agent through both the <code>oat</code> and <code>verl</code> framework. Please see training scripts at <a href="https://github.com/axon-rl/gem/blob/main/examples/train_oat.py">oat training scripts</a> and <a href="https://github.com/axon-rl/gem/blob/main/examples/train_oat.py">verl training scripts</a></p>
+
+        </div>
+
+    </main>
+</div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Axon-RL. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/axon-rl" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    
+    
+    
+    
+    
+    <script src="/js/typing-animation.min.js"></script>
+    <script src="/js/theme-toggle.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/code-copy.min.js"></script>
+</body>
+</html>

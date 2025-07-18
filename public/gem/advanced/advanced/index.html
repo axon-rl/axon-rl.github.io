@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axon-RL - Wiring General Intelligence Through Reinforcement Learning</title>
+    
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: inherit;">💎 Axon-RL</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gem/">GEM</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    
+<div class="gem-layout">
+    <aside class="gem-sidebar">
+        <h3>🚀 Getting Started</h3>
+        <ul>
+            <li><a href="/gem/">Getting Started</a></li>
+            <li><a href="/gem/#installation">Installation</a></li>
+            <li><a href="/gem/#quick-start">Quick Start</a></li>
+        </ul>
+
+        <h3>🌍 Environments</h3>
+        <ul>
+            <li><a href="/gem/environments/">Environment Overview</a></li>
+            <li><a href="/gem/environments/#games">Games</a></li>
+            <li><a href="/gem/environments/#math">Math</a></li>
+            <li><a href="/gem/environments/#code">Code</a></li>
+            <li><a href="/gem/environments/#question-answering">Question-Answering</a></li>
+        </ul>
+
+        <h3>🛠️ Tools & Features</h3>
+        <ul>
+            <li><a href="/gem/tools/">Tools Overview</a></li>
+            <li><a href="/gem/tools/#python-tool">Python Tool</a></li>
+            <li><a href="/gem/tools/#search-tool">Search Tool</a></li>
+            <li><a href="/gem/tools/#wrappers">Wrappers</a></li>
+            <li><a href="/gem/tools/#vectorization">Vectorization</a></li>
+        </ul>
+
+        <h3>🧱 Advanced</h3>
+        <ul>
+            <li><a href="/gem/advanced/">Advanced Overview</a></li>
+            <li><a href="/gem/advanced/#custom-environments">Custom Environments</a></li>
+            <li><a href="/gem/advanced/#training-agents">Training Agents</a></li>
+            <li><a href="/gem/advanced/#api-reference">API Reference</a></li>
+            <li><a href="/gem/advanced/#examples">Examples</a></li>
+        </ul>
+    </aside>
+
+    <main class="gem-content">
+        <h1>Advanced</h1>
+
+        
+        <p class="gem-description">Advanced GEM features, custom environments, and training</p>
+        
+
+        <div class="gem-article">
+            <h1 id="-advanced">🧱 Advanced</h1>
+<p>Advanced features and capabilities for power users and developers.</p>
+<h2 id="custom-environments">Custom Environments</h2>
+<p>GEM makes it simple to create custom environments. To create a new environment, simply add <code>.reset()</code> and <code>.step()</code> methods, and then register the environment <a href="https://github.com/axon-rl/gem/blob/main/gem/envs/__init__.py">here</a>. See examples for more information.</p>
+<h3 id="gemcoreenv-api"><code>gem.core.Env</code> API</h3>
+<h4 id="reset"><code>.reset()</code></h4>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>obs</code> (str) - Initial question/observation from the environment.</li>
+<li><code>info</code> (dict) - Any extra info e.g. for logging or to aid debugging.</li>
+</ul>
+<h4 id="stepaction"><code>.step(action)</code></h4>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>obs</code> (str) - Next observation/output from the environment.</li>
+<li><code>reward</code> (float) - Environment reward.</li>
+<li><code>terminated</code> (bool) - Whether the episode is terminated.</li>
+<li><code>truncated</code> (bool) - Following Gym environments but currently unused.</li>
+<li><code>info</code> (dict) - Any extra info.</li>
+</ul>
+<h3 id="creating-a-custom-environment">Creating a Custom Environment</h3>
+<ol>
+<li><strong>Inherit from <code>gem.core.Env</code></strong>: Your environment should extend the base environment class</li>
+<li><strong>Implement Required Methods</strong>: Add your custom <code>.reset()</code> and <code>.step()</code> logic</li>
+<li><strong>Register the Environment</strong>: Add your environment to the registry for easy access</li>
+<li><strong>Test and Validate</strong>: Ensure your environment works correctly with GEM&rsquo;s ecosystem</li>
+</ol>
+<h3 id="example-structure">Example Structure</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCustomEnvironment</span>(gem<span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>Env):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reset</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Initialize your environment</span>
+</span></span><span style="display:flex;"><span>        observation <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Initial state description&#34;</span>
+</span></span><span style="display:flex;"><span>        info <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> observation, info
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">step</span>(self, action):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Process the action and update environment state</span>
+</span></span><span style="display:flex;"><span>        observation <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Next state description&#34;</span>
+</span></span><span style="display:flex;"><span>        reward <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#66d9ef">if</span> success <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>        terminated <span style="color:#f92672">=</span> check_if_done()
+</span></span><span style="display:flex;"><span>        truncated <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>        info <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> observation, reward, terminated, truncated, info
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Register your environment</span>
+</span></span><span style="display:flex;"><span>gem<span style="color:#f92672">.</span>register(<span style="color:#e6db74">&#34;custom:MyEnv&#34;</span>, MyCustomEnvironment)
+</span></span></code></pre></div><h3 id="best-practices">Best Practices</h3>
+<ul>
+<li><strong>Clear Instructions</strong>: Provide clear, unambiguous instructions in your observations</li>
+<li><strong>Consistent Rewards</strong>: Design a reward structure that encourages desired behavior</li>
+<li><strong>Proper Termination</strong>: Clearly define when episodes should end</li>
+<li><strong>Informative Output</strong>: Use the info dictionary to provide debugging information</li>
+<li><strong>Documentation</strong>: Document your environment&rsquo;s behavior and expected usage</li>
+</ul>
+<h2 id="training-agents">Training Agents</h2>
+<p>GEM includes single file examples for training an LLM agent through both the <code>oat</code> and <code>verl</code> frameworks.</p>
+<div class="gem-callout success">
+    <strong><a href="https://github.com/axon-rl/gem/blob/main/examples/train_oat.py">train with OAT</a></strong>
+</div>
+<div class="gem-callout">
+    <strong>train with verl</strong>
+</div>
+<h3 id="training-framework-options">Training Framework Options</h3>
+<h4 id="oat-framework">OAT Framework</h4>
+<p>The OAT (Open Agent Training) framework provides a comprehensive solution for training language model agents in reinforcement learning environments.</p>
+<h4 id="verl-framework">VERL Framework</h4>
+<p>The VERL framework offers another approach to training agents with different optimization strategies and capabilities.</p>
+<h3 id="getting-started-with-training">Getting Started with Training</h3>
+<ol>
+<li>Choose your training framework (OAT or VERL)</li>
+<li>Select appropriate environments for your use case</li>
+<li>Configure training parameters</li>
+<li>Run the training scripts</li>
+<li>Evaluate and iterate on your trained agents</li>
+</ol>
+<h3 id="training-best-practices">Training Best Practices</h3>
+<ul>
+<li><strong>Environment Selection</strong>: Choose environments that match your training objectives</li>
+<li><strong>Hyperparameter Tuning</strong>: Experiment with different learning rates and batch sizes</li>
+<li><strong>Evaluation</strong>: Regular evaluation on held-out environments to track progress</li>
+<li><strong>Monitoring</strong>: Use logging and visualization tools to track training metrics</li>
+</ul>
+<h2 id="api-reference">API Reference</h2>
+<p>Comprehensive API documentation for GEM&rsquo;s core functionality.</p>
+<h3 id="core-environment-interface">Core Environment Interface</h3>
+<p>All GEM environments implement the standard interface:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Environment creation</span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gem<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;environment_name&#34;</span>)
+</span></span><span style="display:flex;"><span>vec_env <span style="color:#f92672">=</span> gem<span style="color:#f92672">.</span>make_vec(<span style="color:#e6db74">&#34;environment_name&#34;</span>, num_envs<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Basic interaction</span>
+</span></span><span style="display:flex;"><span>observation, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span>observation, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+</span></span><span style="display:flex;"><span>action <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>sample_random_action()
+</span></span></code></pre></div><h3 id="environment-registry">Environment Registry</h3>
+<ul>
+<li><code>gem.make(env_name)</code> - Create a single environment</li>
+<li><code>gem.make_vec(env_name, num_envs)</code> - Create vectorized environments</li>
+<li><code>gem.register(name, env_class)</code> - Register a new environment</li>
+</ul>
+<h3 id="tool-integration">Tool Integration</h3>
+<ul>
+<li><code>gem.tools.PythonCodeTool</code> - Python code execution tool</li>
+<li><code>gem.tools.SearchTool</code> - Information retrieval tool</li>
+<li><code>gem.tools.ToolEnvWrapper</code> - Tool integration wrapper</li>
+</ul>
+<h3 id="wrapper-system">Wrapper System</h3>
+<ul>
+<li>Observation wrappers for different prompt formats</li>
+<li>Tool environment wrappers for multi-tool usage</li>
+<li>Episode tracking wrappers for debugging and monitoring</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>Practical examples and use cases for GEM environments.</p>
+<h3 id="basic-usage-examples">Basic Usage Examples</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Simple environment interaction</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gem<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;ta:GuessTheNumber-v0&#34;</span>)
+</span></span><span style="display:flex;"><span>observation, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> step <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    action <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>sample_random_action()
+</span></span><span style="display:flex;"><span>    observation, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> terminated:
+</span></span><span style="display:flex;"><span>        observation, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span></code></pre></div><h3 id="tool-usage-examples">Tool Usage Examples</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Using environments with tools</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gem
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gem.tools <span style="color:#f92672">import</span> PythonCodeTool
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> gem.wrappers <span style="color:#f92672">import</span> ToolEnvWrapper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>base_env <span style="color:#f92672">=</span> gem<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;math:GSM8k&#34;</span>)
+</span></span><span style="display:flex;"><span>tools <span style="color:#f92672">=</span> [PythonCodeTool()]
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> ToolEnvWrapper(base_env, tools)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>observation, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Agent can now use Python code to solve math problems</span>
+</span></span></code></pre></div><h3 id="vectorized-environment-examples">Vectorized Environment Examples</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Parallel environment execution</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vec_env <span style="color:#f92672">=</span> gem<span style="color:#f92672">.</span>make_vec(<span style="color:#e6db74">&#34;ta:Mastermind-v0&#34;</span>, num_envs<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>observations, infos <span style="color:#f92672">=</span> vec_env<span style="color:#f92672">.</span>reset()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># All environments step in parallel</span>
+</span></span><span style="display:flex;"><span>actions <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;1234&#34;</span>, <span style="color:#e6db74">&#34;5678&#34;</span>, <span style="color:#e6db74">&#34;9012&#34;</span>, <span style="color:#e6db74">&#34;3456&#34;</span>]
+</span></span><span style="display:flex;"><span>observations, rewards, terminated, truncated, infos <span style="color:#f92672">=</span> vec_env<span style="color:#f92672">.</span>step(actions)
+</span></span></code></pre></div><h3 id="custom-environment-examples">Custom Environment Examples</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Creating a custom text-based environment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> gem
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleQAEnvironment</span>(gem<span style="color:#f92672">.</span>core<span style="color:#f92672">.</span>Env):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>questions <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;What is 2+2?&#34;</span>, <span style="color:#e6db74">&#34;What color is the sky?&#34;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>answers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;4&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>]
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current_question <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">reset</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>current_question <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>questions[<span style="color:#ae81ff">0</span>], {}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">step</span>(self, action):
+</span></span><span style="display:flex;"><span>        correct <span style="color:#f92672">=</span> action<span style="color:#f92672">.</span>lower()<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>answers[self<span style="color:#f92672">.</span>current_question]
+</span></span><span style="display:flex;"><span>        reward <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#66d9ef">if</span> correct <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>        terminated <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Correct!&#34;</span> <span style="color:#66d9ef">if</span> correct <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#34;Incorrect&#34;</span>, reward, terminated, <span style="color:#66d9ef">False</span>, {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Register and use</span>
+</span></span><span style="display:flex;"><span>gem<span style="color:#f92672">.</span>register(<span style="color:#e6db74">&#34;custom:SimpleQA&#34;</span>, SimpleQAEnvironment)
+</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gem<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;custom:SimpleQA&#34;</span>)
+</span></span></code></pre></div><h3 id="integration-examples">Integration Examples</h3>
+<p>Examples of integrating GEM with popular ML frameworks and tools for complete training pipelines.</p>
+
+        </div>
+
+    </main>
+</div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Axon-RL. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/axon-rl" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    
+    
+    
+    
+    <script src="/js/typing-animation.min.js"></script>
+    <script src="/js/theme-toggle.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axon-RL - Wiring General Intelligence Through Reinforcement Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: inherit;">💎 Axon-RL</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/gem/">GEM</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    
+<div class="gem-layout">
+    <aside class="gem-sidebar">
+        <h3>🚀 Getting Started</h3>
+        <ul>
+            <li><a href="/gem/">Getting Started</a></li>
+            <li><a href="/gem/#installation">Installation</a></li>
+            <li><a href="/gem/#quick-start">Quick Start</a></li>
+        </ul>
+
+        <h3>🌍 Environments</h3>
+        <ul>
+            <li><a href="/gem/environments/">Environment Overview</a></li>
+            <li><a href="/gem/environments/#games">Games</a></li>
+            <li><a href="/gem/environments/#math">Math</a></li>
+            <li><a href="/gem/environments/#code">Code</a></li>
+            <li><a href="/gem/environments/#question-answering">Question-Answering</a></li>
+        </ul>
+
+        <h3>🛠️ Tools & Features</h3>
+        <ul>
+            <li><a href="/gem/tools/">Tools Overview</a></li>
+            <li><a href="/gem/tools/#python-tool">Python Tool</a></li>
+            <li><a href="/gem/tools/#search-tool">Search Tool</a></li>
+            <li><a href="/gem/tools/#wrappers">Wrappers</a></li>
+            <li><a href="/gem/tools/#vectorization">Vectorization</a></li>
+        </ul>
+
+        <h3>🧱 Advanced</h3>
+        <ul>
+            <li><a href="/gem/advanced/">Advanced Overview</a></li>
+            <li><a href="/gem/advanced/#custom-environments">Custom Environments</a></li>
+            <li><a href="/gem/advanced/#training-agents">Training Agents</a></li>
+        </ul>
+    </aside>
+
+    <main class="gem-content">
+        <h1>🌍 Environments</h1>
+
+        
+
+        <div class="gem-article">
+            <h2 id="overview">Overview</h2>
+<p>GEM supports a diverse range of environments and makes it easy to add your own. GEM provides four main categories of environments, each designed for different types of agent training and evaluation.</p>
+<p>All GEM environments follow a consistent interface pattern:</p>
+<ul>
+<li><code>env.reset()</code> - Initialize/reset the environment</li>
+<li><code>env.step(action)</code> - Take an action and get the next state</li>
+<li><code>env.sample_random_action()</code> - Get a random valid action</li>
+</ul>
+<p>This design closely follows the Gymnasium standard, making it easy to integrate with existing RL frameworks and tools.</p>
+<h2 id="games">Games</h2>
+<p>Interactive game environments including Sudoku, Minesweeper, Wordle, and more from the TextArena collection.</p>
+<p>We maintain local versions of many of the <a href="https://github.com/LeonGuertler/TextArena">TextArena</a> games.</p>
+<h3 id="available-game-environments">Available Game Environments</h3>
+<table class="gem-table">
+    <thead>
+        <tr>
+            <th>Environment</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>game:GuessTheNumber</code></td>
+            <td>The agent has multiple guesses to guess the hidden number. The agent receives whether the hidden number is higher or lower than its guess.</td>
+        </tr>
+        <tr>
+            <td><code>game:Mastermind</code></td>
+            <td>The agent has multiple guesses to guess the hidden code. The agent receives black and white pegs depending on the number of correct digits in the right and wrong places.</td>
+        </tr>
+        <tr>
+            <td><code>game:Minesweeper</code></td>
+            <td>The agent must reveal all safe grid squares without revealing a mine. For each revealed square the agent receives the number of adjacent squares that contain mines.</td>
+        </tr>
+        <tr>
+            <td><code>game:Wordle</code></td>
+            <td>The agent must guess the hidden word. After each turn the agent receives feedback ("G"=correct letter + correct position, "Y"=correct letter + incorrect position, "X"=incorrect letter).</td>
+        </tr>
+        <tr>
+            <td><code>game:FifteenPuzzle</code></td>
+            <td>Arrange tiles on the board into ascending order using the empty space to slide tiles into different positions.</td>
+        </tr>
+        <tr>
+            <td><code>game:Hangman</code></td>
+            <td>The objective of the game is to guess the word by providing one letter guesses or the entire word.</td>
+        </tr>
+        <tr>
+            <td><code>game:Sudoku</code></td>
+            <td>Classic Sudoku Game. `easy` version renders a 4x4 board.</td>
+        </tr>
+        <tr>
+            <td><code>game:TowerofHanoi</code></td>
+            <td>a classic single-player puzzle game where the objective is to move a stack of disks from one tower to another following specific rules.</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="difficulty-variants">Difficulty Variants</h3>
+<p>Each environment additionally has <code>-easy</code>, <code>-hard</code>, and <code>-random</code> variants, where <code>-random</code> denotes that the environment is set to a random level of difficulty at each reset.</p>
+<h3 id="adding-new-games">Adding New Games</h3>
+<p>Adding new games is easy. Simply include <code>.step()</code>, <code>.reset()</code> functions and register the environment with a new name.</p>
+<h2 id="math">Math</h2>
+<p>Mathematical reasoning environments with automatic answer parsing and checking, compatible with various math datasets.</p>
+<p>GEM&rsquo;s math environment class includes automatic answer parsing and checking and is designed to be compatible with any math dataset. To add a new environment simply register the dataset. A typical use case is combining these with access to the python tool to train the agent to utilize code.</p>
+<h3 id="available-math-environments">Available Math Environments</h3>
+<table class="gem-table">
+    <thead>
+        <tr>
+            <th>Environment</th>
+            <th>Dataset</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>math:Math12k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/MATH-12k">MATH-12k</a></td>
+        </tr>
+        <tr>
+            <td><code>math:ASDIV2k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/ASDIV-2k">ASDIV-2k</a></td>
+        </tr>
+        <tr>
+            <td><code>math:GSM8k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/GSM-8k">GSM-8k</a></td>
+        </tr>
+        <tr>
+            <td><code>math:ORZ57k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/ORZ-57k">ORZ-57k</a></td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>Automatic Answer Parsing</strong>: Built-in parsing for mathematical expressions and numerical answers</li>
+<li><strong>Answer Checking</strong>: Automatic validation of agent responses against ground truth</li>
+<li><strong>Dataset Compatibility</strong>: Works with any math dataset that follows the standard format</li>
+<li><strong>Tool Integration</strong>: Designed to work seamlessly with Python tool for computational assistance</li>
+</ul>
+<h2 id="code">Code</h2>
+<p>Code generation and evaluation environments that automatically test solutions in sandboxed environments.</p>
+<p>GEM&rsquo;s code environment class automatically evaluates success by running the test cases in a sandbox. This class can be used with any code dataset consisting of the task and test cases.</p>
+<h3 id="available-code-environments">Available Code Environments</h3>
+<table class="gem-table">
+    <thead>
+        <tr>
+            <th>Environment</th>
+            <th>Dataset</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>code:CodeContest</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/CodeContest">CodeContest</a></td>
+        </tr>
+        <tr>
+            <td><code>code:Taco8k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/TACO-8k">TACO-8k</a></td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="features-1">Features</h3>
+<ul>
+<li><strong>Automatic Code Evaluation</strong>: Runs test cases in a secure sandbox environment</li>
+<li><strong>Test Case Validation</strong>: Compares agent-generated code against provided test cases</li>
+<li><strong>Sandbox Security</strong>: Safe execution environment that prevents harmful code execution</li>
+<li><strong>Dataset Flexibility</strong>: Compatible with any code dataset that includes problems and test cases</li>
+</ul>
+<h2 id="question-answering">Question-Answering</h2>
+<p>QA environments designed for integrated search tool usage to train agents in information retrieval and reasoning.</p>
+<p>GEM&rsquo;s question-answering environments are designed to allow integrated search tool usage to train the agent to use search functionality. Additional question-answering environments can be added by simply registering the dataset.</p>
+<h3 id="available-qa-environments">Available QA Environments</h3>
+<table class="gem-table">
+    <thead>
+        <tr>
+            <th>Environment</th>
+            <th>Dataset</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>qa:NaturalQuestions</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/NaturalQuestions">NaturalQuestions</a></td>
+        </tr>
+        <tr>
+            <td><code>qa:HotpotQA</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/HotpotQA">HotpotQA</a></td>
+        </tr>
+        <tr>
+            <td><code>logic:RuleTaker-d0</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/RuleTaker-d0-70k">RuleTaker-d0-70k</a></td>
+        </tr>
+        <tr>
+            <td><code>logic:RuleTaker-d1</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/RuleTaker-d1-70k">RuleTaker-d1-70k</a></td>
+        </tr>
+        <tr>
+            <td><code>logic:RuleTaker-d2</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/RuleTaker-d2-70k">RuleTaker-d2-70k</a></td>
+        </tr>
+        <tr>
+            <td><code>logic:RuleTaker-d3</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/RuleTaker-d3-70k">RuleTaker-d3-70k</a></td>
+        </tr>
+        <tr>
+            <td><code>logic:RuleTaker-d5</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/RuleTaker-d5-70k">RuleTaker-d5-70k</a></td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="environment-types">Environment Types</h3>
+<ul>
+<li><strong>Natural Questions</strong>: Real-world questions that people ask search engines, requiring factual knowledge and reasoning</li>
+<li><strong>HotpotQA</strong>: Multi-hop reasoning questions that require gathering information from multiple sources</li>
+<li><strong>RuleTaker</strong>: Logical reasoning environments with varying complexity levels (d0 through d5), where agents must apply rules to derive conclusions</li>
+</ul>
+
+        </div>
+
+    </main>
+</div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Axon-RL. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/axon-rl" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+    
+    
+    
+    
+    
+    <script src="/js/typing-animation.min.js"></script>
+    <script src="/js/theme-toggle.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/code-copy.min.js"></script>
+</body>
+</html>
