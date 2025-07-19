@@ -271,7 +271,7 @@ h2 {
 
 .blog-date {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     margin-bottom: 1rem;
 }
 
@@ -491,7 +491,7 @@ html {
     border: 1px solid var(--code-border);
     border-radius: 4px;
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--code-text) !important;
     font-weight: 500;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -513,7 +513,7 @@ html {
     padding: 0;
     color: var(--code-text) !important;
     border: none !important;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 400;
     box-shadow: none;
 }
@@ -620,7 +620,7 @@ html {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 0.375rem 0.75rem;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-secondary);
     cursor: pointer;
@@ -684,7 +684,7 @@ pre:hover .copy-button,
 
 .api-class {
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-accent);
     margin: 0;
@@ -692,7 +692,7 @@ pre:hover .copy-button,
 
 .api-method {
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-primary);
     margin: 1.5rem 0 0.75rem 0;
@@ -710,6 +710,7 @@ pre:hover .copy-button,
     margin-bottom: 1.25rem;
     color: var(--text-secondary);
     line-height: 1.6;
+    font-size: 1rem;
 }
 
 .api-parameters {
@@ -744,20 +745,21 @@ pre:hover .copy-button,
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
     font-weight: 600;
     color: var(--text-accent);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .api-param-type {
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
     color: var(--text-muted);
     font-style: italic;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
 
 .api-param-desc {
     color: var(--text-secondary);
     margin-top: 0.25rem;
     line-height: 1.5;
+    font-size: 1rem;
 }
 
 .api-returns {
@@ -792,20 +794,21 @@ pre:hover .copy-button,
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
     font-weight: 600;
     color: var(--text-accent);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .api-return-type {
     font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
     color: var(--text-muted);
     font-style: italic;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
 
 .api-return-desc {
     color: var(--text-secondary);
     margin-top: 0.25rem;
     line-height: 1.5;
+    font-size: 1rem;
 }
 
 
@@ -976,18 +979,18 @@ pre:hover .copy-button,
     .gem-content pre {
         padding: 1rem;
         margin: 1rem 0;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         border-radius: 6px;
     }
     
     .gem-content code {
         padding: 0.2rem 0.4rem;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         border-radius: 4px;
     }
     
     .gem-table code {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         padding: 0.15rem 0.3rem;
     }
     
@@ -1000,7 +1003,7 @@ pre:hover .copy-button,
     }
     
     .gem-table {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
     }
     
     .gem-table th,
@@ -1016,7 +1019,7 @@ pre:hover .copy-button,
     
     .expandable-section summary {
         padding: 1rem;
-        font-size: 0.95rem;
+        font-size: 0.875rem;
     }
     
     .expandable-section .content {
@@ -1043,7 +1046,7 @@ pre:hover .copy-button,
 
 .footer p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
 }
 
 .footer-links a {

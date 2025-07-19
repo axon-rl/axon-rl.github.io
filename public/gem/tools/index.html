@@ -34,6 +34,7 @@
             <li><a href="/gem/">Getting Started</a></li>
             <li><a href="/gem/#installation">Installation</a></li>
             <li><a href="/gem/#quick-start">Quick Start</a></li>
+            <li><a href="/gem/#training-agents">Training Agents</a></li>
         </ul>
 
         <h3>🌍 Environments</h3>
@@ -45,78 +46,149 @@
             <li><a href="/gem/environments/#question-answering">Question-Answering</a></li>
         </ul>
 
-        <h3>🛠️ Tools & Features</h3>
+        <h3>🛠️ Tools</h3>
         <ul>
             <li><a href="/gem/tools/">Tools Overview</a></li>
             <li><a href="/gem/tools/#python-tool">Python Tool</a></li>
             <li><a href="/gem/tools/#search-tool">Search Tool</a></li>
-            <li><a href="/gem/tools/#wrappers">Wrappers</a></li>
-            <li><a href="/gem/tools/#vectorization">Vectorization</a></li>
+        </ul>
+
+        <h3>Features</h3>
+        <ul>
+            <li><a href="/gem/features/#wrappers">Wrappers</a></li>
+            <li><a href="/gem/features/#vectorization">Vectorization</a></li>
         </ul>
 
         <h3>🧱 Advanced</h3>
         <ul>
             <li><a href="/gem/advanced/">Advanced Overview</a></li>
             <li><a href="/gem/advanced/#custom-environments">Custom Environments</a></li>
-            <li><a href="/gem/advanced/#training-agents">Training Agents</a></li>
         </ul>
     </aside>
 
     <main class="gem-content">
-        <h1>🛠️ Tools &amp; Features</h1>
+        <h1>🛠️ Tools</h1>
 
         
 
         <div class="gem-article">
             <h2 id="overview">Overview</h2>
-<p>GEM provides a comprehensive set of tools and features to enhance agent capabilities and enable sophisticated problem-solving approaches. GEM currently supports <code>python</code> and <code>search</code> tools to enhance agent capabilities and enable more sophisticated problem-solving approaches.</p>
+<p>GEM provides a comprehensive set of tools to enhance agent capabilities and enable sophisticated problem-solving approaches. GEM currently supports <code>python</code> and <code>search</code> tools to enhance agent capabilities and enable more sophisticated problem-solving approaches.</p>
 <h2 id="python-tool">Python Tool</h2>
 <p>Allows agents to write and execute Python code, enabling computational problem-solving and data manipulation capabilities.</p>
 <p>GEM&rsquo;s python code tool allows the agent to learn to write code. The python tool parses code blocks, runs them, and returns the result.</p>
 <h3 id="api-reference">API Reference</h3>
-<h4 id="class-gemtoolspython_code_toolpythoncodetool"><code>class gem.tools.python_code_tool.PythonCodeTool</code></h4>
-<h5 id="execute_actionaction-str"><code>.execute_action(action: str)</code></h5>
-<p>Parses the action to find the first complete code block. If a valid code block is found the code is run and the output is returned.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>action</code> (str) – The response from the LLM agent.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li><code>is_valid</code> (bool) - Whether a valid code block is found.</li>
-<li><code>has_error</code> (bool) - Whether the code gave an error.</li>
-<li><code>observation</code> (str) - The output of running the code if a valid code block is found, otherwise an empty string.</li>
-<li><code>parsed_action</code> (str) - The action truncated at the end of the first valid code block. If no code block is found then parsed_action is set to the input action.</li>
-</ul>
-<h5 id="instruction_string"><code>.instruction_string()</code></h5>
-<p>A string for adding to the prompt to instruct the agent that the python code tool is available.</p>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>Instruction string for the agent</li>
-</ul>
+<div class="api-box">
+    <div class="api-header">
+        <h4 class="api-class">gem.tools.python_code_tool.PythonCodeTool</h4>
+    </div>
+    <div class="api-content">
+        <div class="api-method">.execute_action(action: str)</div>
+        <div class="api-description">
+            Parses the action to find the first complete code block. If a valid code block is found the code is run and the output is returned.
+        </div>
+        <div class="api-parameters">
+            <h4>Parameters</h4>
+            <ul class="api-param-list">
+                <li class="api-param-item">
+                    <span class="api-param-name">action</span> <span class="api-param-type">(str)</span>
+                    <div class="api-param-desc">The response from the LLM agent.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="api-returns">
+            <h4>Returns</h4>
+            <ul class="api-return-list">
+                <li class="api-return-item">
+                    <span class="api-return-name">is_valid</span> <span class="api-return-type">(bool)</span>
+                    <div class="api-return-desc">Whether a valid code block is found.</div>
+                </li>
+                <li class="api-return-item">
+                    <span class="api-return-name">has_error</span> <span class="api-return-type">(bool)</span>
+                    <div class="api-return-desc">Whether the code gave an error.</div>
+                </li>
+                <li class="api-return-item">
+                    <span class="api-return-name">observation</span> <span class="api-return-type">(str)</span>
+                    <div class="api-return-desc">The output of running the code if a valid code block is found, otherwise an empty string.</div>
+                </li>
+                <li class="api-return-item">
+                    <span class="api-return-name">parsed_action</span> <span class="api-return-type">(str)</span>
+                    <div class="api-return-desc">The action truncated at the end of the first valid code block. If no code block is found then parsed_action is set to the input action.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="api-method">.instruction_string()</div>
+        <div class="api-description">
+            A string for adding to the prompt to instruct the agent that the python code tool is available.
+        </div>
+        <div class="api-returns">
+            <h4>Returns</h4>
+            <ul class="api-return-list">
+                <li class="api-return-item">
+                    <span class="api-return-name">str</span>
+                    <div class="api-return-desc">Instruction string for the agent</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 <h2 id="search-tool">Search Tool</h2>
 <p>GEM includes a search tool, enabling the agent to learn to call search engines for information retrieval and knowledge enhancement.</p>
 <h3 id="api-reference-1">API Reference</h3>
-<h4 id="gemtoolssearch_toolsearchtool"><code>gem.tools.search_tool.SearchTool</code></h4>
-<h5 id="execute_actionaction-str-1"><code>.execute_action(action: str)</code></h5>
-<p>Parses the action to find the first complete extract the <code>&lt;search&gt;</code> content. Returns the result of the search if a valid search call is found.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>action</code> (str) – The response from the LLM agent.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li><code>is_valid</code> (bool) - Whether a valid <code>&lt;search&gt;&lt;/search&gt;</code> call is found.</li>
-<li><code>has_error</code> (bool) - Whether the search engine gave an error.</li>
-<li><code>observation</code> (str) - The output of running the search if a valid search call is found, otherwise an empty string.</li>
-<li><code>parsed_action</code> (str) - The action truncated at the end of the first valid search call. If no search call is found then parsed_action is set to the input action.</li>
-</ul>
-<h5 id="instruction_string-1"><code>.instruction_string()</code></h5>
-<p>A string for adding to the prompt to instruct the agent that the search tool is available.</p>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>Instruction string for the agent.</li>
-</ul>
+<div class="api-box">
+    <div class="api-header">
+        <h4 class="api-class">gem.tools.search_tool.SearchTool</h4>
+    </div>
+    <div class="api-content">
+        <div class="api-method">.execute_action(action: str)</div>
+        <div class="api-description">
+            Parses the action to find the first complete extract the <code>&lt;search&gt;</code> content. Returns the result of the search if a valid search call is found.
+        </div>
+        <div class="api-parameters">
+            <h4>Parameters</h4>
+            <ul class="api-param-list">
+                <li class="api-param-item">
+                    <span class="api-param-name">action</span> <span class="api-param-type">(str)</span>
+                    <div class="api-param-desc">The response from the LLM agent.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="api-returns">
+            <h4>Returns</h4>
+            <ul class="api-return-list">
+                <li class="api-return-item">
+                    <span class="api-return-name">is_valid</span> <span class="api-return-type">(bool)</span>
+                    <div class="api-return-desc">Whether a valid <code>&lt;search&gt;&lt;/search&gt;</code> call is found.</div>
+                </li>
+                <li class="api-return-item">
+                    <span class="api-return-name">has_error</span> <span class="api-return-type">(bool)</span>
+                    <div class="api-return-desc">Whether the search engine gave an error.</div>
+                </li>
+                <li class="api-return-item">
+                    <span class="api-return-name">observation</span> <span class="api-return-type">(str)</span>
+                    <div class="api-return-desc">The output of running the search if a valid search call is found, otherwise an empty string.</div>
+                </li>
+                <li class="api-return-item">
+                    <span class="api-return-name">parsed_action</span> <span class="api-return-type">(str)</span>
+                    <div class="api-return-desc">The action truncated at the end of the first valid search call. If no search call is found then parsed_action is set to the input action.</div>
+                </li>
+            </ul>
+        </div>
+        <div class="api-method">.instruction_string()</div>
+        <div class="api-description">
+            A string for adding to the prompt to instruct the agent that the search tool is available.
+        </div>
+        <div class="api-returns">
+            <h4>Returns</h4>
+            <ul class="api-return-list">
+                <li class="api-return-item">
+                    <span class="api-return-name">str</span>
+                    <div class="api-return-desc">Instruction string for the agent</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 <h3 id="usage">Usage</h3>
 <p>Agents can use the search tool by including search queries in their responses using the <code>&lt;search&gt;&lt;/search&gt;</code> tags. The tool will:</p>
 <ol>
@@ -125,125 +197,6 @@
 <li>Return the search results to the agent</li>
 <li>Allow the agent to use this information for better responses</li>
 </ol>
-<h2 id="wrappers">Wrappers</h2>
-<p>Following the Gym interface, GEM provides wrappers to easily add and change functionality. Wrappers are registered in the <a href="https://github.com/axon-rl/gem/blob/main/gem/wrappers/wrapper_factory.py">WRAPPER_FACTORY</a>.</p>
-<p>The main wrapper types are: observation wrappers, tool wrappers, and episode tracking wrappers.</p>
-<div class="gem-callout">
-    <strong>Note:</strong> Order is important! Wrappers should be added in the following order:<br/>
-    tool env wrapper (optional) → observation wrapper (optional) → episode tracking wrapper (optional).
-</div>
-<h3 id="observation-wrappers">Observation Wrappers</h3>
-<p>Observation wrappers are used to convert the sequence of game states and agent actions into a string which is used as the prompt for the LLM agent at the next step.</p>
-<h4 id="observation-wrapper-examples">Observation Wrapper Examples</h4>
-<table class="gem-table">
-    <thead>
-        <tr>
-            <th>Wrapper name</th>
-            <th>Description</th>
-            <th>Example (Mastermind)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>no wrapper</td>
-            <td>The observation string from the environment.</td>
-            <td><code>"At turn 2, you guessed 243. This guess receives 1 black peg(s) and 2 white peg(s)."</code></td>
-        </tr>
-        <tr>
-            <td><code>concat</code></td>
-            <td>The sequence of environment observation strings from all previous steps concatenated together.</td>
-            <td><code>"You are playing Mastermind. [instructions]... Enter your first guess to start the game.\nAt turn 1, you guessed 123. This guess receives 1 black peg(s) and 1 white peg(s).\nAt turn 2, you guessed 243. This guess receives 1 black peg(s) and 2 white peg(s)."</code></td>
-        </tr>
-        <tr>
-            <td><code>concat_with_action</code></td>
-            <td>The sequence of [environment observation string, agent action, environment observation string, etc.] from all previous steps concatenated together.</td>
-            <td><code>"You are playing Mastermind. [instructions]... Enter your first guess to start the game.\nOkay, I will guess a random 3 digit number for now. My first guess will be \\boxed{123}.\nAt turn 1, you guessed 123. This guess receives 1 black peg(s) and 1 white peg(s).\nOkay, let's think. One digit is in the correct place. Perhaps this is 3. One digit is completely incorrect. Let's try switching 1 for 4 and moving the 2. My next guess will be \\boxed{243}.\nAt turn 2, you guessed 243. This guess receives 1 black peg(s) and 2 white peg(s)."</code></td>
-        </tr>
-        <tr>
-            <td><code>concat_chat</code> <em>(default)</em></td>
-            <td>The sequence of [environment observation string, agent action, environment observation string, etc.] from all previous steps concatenated together with the chat template applied to denote "user" (environment) vs "assistant" (agent) turns.</td>
-            <td><code>"&lt;|im_start|&gt;user\nYou are playing Mastermind. [instructions]... Enter your first guess to start the game.&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\nOkay, I will guess a random 3 digit number for now. My first guess will be \\boxed{123}&lt;|im_end|&gt; &lt;|im_start|&gt;user\nAt turn 1, you guessed 123. This guess receives 1 black peg(s) and 1 white peg(s).&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\nOkay, let's think. One digit is in the correct place. Perhaps this is 3. One digit is completely incorrect. Let's try switching 1 for 4 and moving the 2. My next guess will be \\boxed{243}.&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\nAt turn 2, you guessed 243. This guess receives 1 black peg(s) and 2 white peg(s).&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant"</code></td>
-        </tr>
-        <tr>
-            <td><code>concat_chat_on_reset</code></td>
-            <td>Same as concat_with_action but the chat template tag is applied at the start.</td>
-            <td><code>"&lt;|im_start|&gt;user\nYou are playing Mastermind. [instructions]... Enter your first guess to start the game.\nOkay, I will guess a random 3 digit number for now. My first guess will be \\boxed{123}.\nAt turn 1, you guessed 123. This guess receives 1 black peg(s) and 1 white peg(s).\nOkay, let's think. One digit is in the correct place. Perhaps this is 3. One digit is completely incorrect. Let's try switching 1 for 4 and moving the 2. My next guess will be \\boxed{243}.\nAt turn 2, you guessed 243. This guess receives 1 black peg(s) and 2 white peg(s)."</code></td>
-        </tr>
-    </tbody>
-</table>
-<h3 id="tool-env-wrapper">Tool Env Wrapper</h3>
-<p>GEM supports integrating multiple tools to the same agent. Tools are handled by the tool wrapper.</p>
-<p>The input to <code>env.step()</code> is &ldquo;action&rdquo;, a string which is typically the response from the LLM. With the tool env wrapper, when <code>env.step(action)</code> is called, the tool env wrapper iterates through each tool and attempts to parse and execute the action. If any tool is executed successfully, the observation from that tool is returned. If no tool is executed successfully, the action is passed to the wrapped environment.</p>
-<h4 id="gemtoolstool_env_wrappertoolenvwrapper"><code>gem.tools.tool_env_wrapper.ToolEnvWrapper</code></h4>
-<p><strong>Attributes:</strong></p>
-<ul>
-<li><code>env</code> - The wrapped environment.</li>
-<li><code>tools</code> (List[BaseTool]) – A list of tools.</li>
-<li><code>tool_reward</code> (float = 0.05) - Reward if a tool is called.</li>
-<li><code>tool_success_reward</code> (float = 0.05) - Additional reward if the tool call is executed without errors.</li>
-<li><code>max_tool_uses</code> (int = 10)</li>
-</ul>
-<h5 id="toolenvwrapperreset"><code>ToolEnvWrapper.reset()</code></h5>
-<p><strong>Returns:</strong></p>
-<ul>
-<li><code>obs</code> (str) - The ToolEnvWrapper.env.reset() output (ie. the environment question), with a list of the available tools and instructions concatenated onto the end.</li>
-<li><code>info</code> (dict) - Extra info about the episode state.</li>
-</ul>
-<h5 id="toolenvwrapperstepaction-str"><code>ToolEnvWrapper.step(action: str)</code></h5>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>action</code> (str) – The response from the LLM agent.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li><code>observation</code> (str) - The output of the tool call if a tool call is found, otherwise the observation from ToolEnvWrapper.env.step().</li>
-<li><code>reward</code> (float) - tool_reward if a tool call is found (+ tool_success_reward if the tool call is executed without errors), otherwise the reward from ToolEnvWrapper.env.step()</li>
-<li><code>terminated</code> (bool) - Whether the episode is terminated.</li>
-<li><code>truncated</code> (bool) - Whether the episode is truncated.</li>
-<li><code>info</code> (dict) - Extra info about the episode state.</li>
-</ul>
-<h3 id="episode-tracking-wrapper">Episode Tracking Wrapper</h3>
-<p>The tracking wrapper logs statistics over the episode, including cumulative_rewards etc. It is not required but can be useful for debugging.</p>
-<h2 id="vectorization">Vectorization</h2>
-<p>GEM supports collecting multiple episodes in parallel, including asynchronously stepping each of the environments (which may include tool calls etc.). VectorEnv environments automatically reset so that when an episode from one of the parallel environments ends, it is automatically resets and begins the next episode.</p>
-<div class="gem-callout">
-    <strong>Performance tip:</strong> Use vectorization for better throughput when training agents on multiple episodes simultaneously.
-</div>
-<h3 id="benefits">Benefits</h3>
-<ul>
-<li><strong>Improved Throughput</strong>: Run multiple environments simultaneously for faster data collection</li>
-<li><strong>Automatic Reset</strong>: Environments automatically reset when episodes end, ensuring continuous operation</li>
-<li><strong>Asynchronous Execution</strong>: Each environment can step independently, maximizing efficiency</li>
-<li><strong>Tool Support</strong>: Vectorized environments fully support tool usage across all parallel instances</li>
-</ul>
-<h3 id="usage-1">Usage</h3>
-<p>Use <code>make_vec()</code> instead of <code>make()</code> when creating environments:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gem</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Create vectorized environment with 8 parallel instances</span>
-</span></span><span class="line"><span class="cl"><span class="n">vec_env</span> <span class="o">=</span> <span class="n">gem</span><span class="o">.</span><span class="n">make_vec</span><span class="p">(</span><span class="s2">&#34;ta:GuessTheNumber-v0&#34;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Reset all environments</span>
-</span></span><span class="line"><span class="cl"><span class="n">observations</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">vec_env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Step all environments</span>
-</span></span><span class="line"><span class="cl"><span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">env</span><span class="o">.</span><span class="n">sample_random_action</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl"><span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">vec_env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
-</span></span></code></pre></div><h3 id="key-features">Key Features</h3>
-<ul>
-<li><strong>Automatic Management</strong>: No need to manually handle environment resets</li>
-<li><strong>Scalable</strong>: Easily adjust the number of parallel environments based on your computational resources</li>
-<li><strong>Compatible</strong>: Works with all GEM environments, tools, and wrappers</li>
-<li><strong>Efficient</strong>: Optimized for minimal overhead in parallel execution</li>
-</ul>
-<h3 id="use-cases">Use Cases</h3>
-<p>Vectorization is particularly useful for:</p>
-<ul>
-<li>Training reinforcement learning agents</li>
-<li>Collecting large datasets efficiently</li>
-<li>Running evaluation experiments across multiple episodes</li>
-<li>Testing agent performance with statistical significance</li>
-</ul>
 
         </div>
 

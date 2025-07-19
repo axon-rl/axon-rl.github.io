@@ -9,7 +9,7 @@ aliases: ["/gem/overview/"]
 GEM is a diverse collection of environments for training LLM agents in the era of experience. The library includes Math, Code, general reasoning, and question-answering environments, as well as a suite of games (Mastermind, Minesweeper, Hangman, etc). GEM also features fully integrated python and search tool use.
 
 <div class="gem-callout">
-    <strong>New to GEM?</strong> Start with our Quick Start guide below to get up and running in minutes.
+    <strong>New to GEM?</strong> Start with our Quick Start guide below to get started and running in minutes.
 </div>
 
 ## Installation
@@ -46,5 +46,20 @@ for _ in range(30):
     Please see further documentation for details of <strong>vectorized environments</strong>, <strong>automated resetting</strong>, <strong>different observation/chat templates</strong>, and <strong>integrated tools</strong>.
 </div>
 
-## Training an agent
-GEM includes single file examples for training an LLM agent through both the `oat` and `verl` framework. Please see training scripts at [oat training scripts](https://github.com/axon-rl/gem/blob/main/examples/train_oat.py) and [verl training scripts](https://github.com/axon-rl/gem/blob/main/examples/train_oat.py)
+
+## Training Agents
+
+GEM includes __single file__ examples for training an LLM agent through `oat` or `verl` framework.
+
+<div class="gem-callout success">
+    <strong><a href="https://github.com/axon-rl/gem/blob/main/examples/train_oat.py">train with OAT</a></strong>
+</div>
+
+The [OAT](https://github.com/sail-sg/oat) framework provides a comprehensive solution for training language model agents in reinforcement learning environments.
+
+
+<div class="gem-callout">
+    <strong><a href="https://github.com/axon-rl/gem/tree/main/examples/train_verl">train with verl</a></strong>
+</div>
+
+The [VERL](https://github.com/volcengine/verl) framework offers another approach to training agents with different optimization strategies and capabilities.
