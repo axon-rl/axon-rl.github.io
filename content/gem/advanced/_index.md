@@ -38,26 +38,38 @@ GEM makes it simple to create custom environments. To create a new environment, 
 ### Example Structure
 
 ```python
-import gem
+from gem.core import Env
+from gem.envs.registration import register
 
-class MyCustomEnvironment(gem.core.Env):
-    def reset(self):
-        # Initialize your environment
-        observation = "Initial state description"
-        info = {}
-        return observation, info
-    
+class ReverseStringEnv(Env):
+    def __init__(self, str_len: int = 5):
+        super().__init__()
+        self.str_len = str_len
+
+    def _get_instructions(self) -> str:
+        return (
+            "You are tasked to reverse a given string.\n"
+            "You may provide your response in any manner. Only the content wrapped inside \\boxed{} will be considered as your final answer.\n"
+            f"Please reverse the string: {self.gt_str}.\n"
+        )
+
+    def reset(self, seed=None):
+        super().reset(seed)
+        characters = string.ascii_letters + string.digits  # A-Z, a-z, 0-9
+        self.gt_str = "".join(random.choices(characters, k=self.str_len))
+        return self._get_instructions(), {}
+
     def step(self, action):
-        # Process the action and update environment state
-        observation = "Next state description"
-        reward = 1.0 if success else 0.0
-        terminated = check_if_done()
-        truncated = False
-        info = {}
-        return observation, reward, terminated, truncated, info
+        clean_action = extract_last_boxed_answer(action)
+        if clean_action is None:
+            reward = 0
+        else:
+            reward = float(clean_action[::-1] == self.gt_str)
+        return TERMINAL_STATE, reward, True, True, {}
+
 
 # Register your environment
-gem.register("custom:MyEnv", MyCustomEnvironment)
+register("custom:ReverseString", ReverseStringEnv)
 ```
 
 ### Best Practices

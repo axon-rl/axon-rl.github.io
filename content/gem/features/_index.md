@@ -174,7 +174,7 @@ Use `make_vec()` instead of `make()` when creating environments:
 import gem
 
 # Create vectorized environment with 8 parallel instances
-vec_env = gem.make_vec("ta:GuessTheNumber-v0", num_envs=8)
+vec_env = gem.make_vec("game:GuessTheNumber-v0", num_envs=8)
 
 # Reset all environments
 observations, infos = vec_env.reset()

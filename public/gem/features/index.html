@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axon-RL - Wiring General Intelligence Through Reinforcement Learning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     
     <link rel="stylesheet" href="/css/styles.min.css">
 </head>
+
 <body>
     <header>
         <nav class="container">
             <div class="logo">
-                <a href="/" style="text-decoration: none; color: inherit;">💎 Axon-RL</a>
+                <a href="/" style="text-decoration: none; color: inherit;">Axon-RL</a>
             </div>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/gem/">GEM</a></li>
+                <li><a href="/gem/">💎 GEM</a></li>
             </ul>
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                 <span class="theme-icon">🌙</span>
@@ -43,7 +47,8 @@
             <li><a href="/gem/environments/#games">Games</a></li>
             <li><a href="/gem/environments/#math">Math</a></li>
             <li><a href="/gem/environments/#code">Code</a></li>
-            <li><a href="/gem/environments/#question-answering">Question-Answering</a></li>
+            <li><a href="/gem/environments/#question-answering">Question Answering</a></li>
+            <li><a href="/gem/environments/#reasoning-gym">Reasoning Gym</a></li>
         </ul>
 
         <h3>🛠️ Tools</h3>
@@ -53,7 +58,7 @@
             <li><a href="/gem/tools/#search-tool">Search Tool</a></li>
         </ul>
 
-        <h3>Features</h3>
+        <h3>✨ Features</h3>
         <ul>
             <li><a href="/gem/features/#wrappers">Wrappers</a></li>
             <li><a href="/gem/features/#vectorization">Vectorization</a></li>
@@ -221,7 +226,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">gem</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Create vectorized environment with 8 parallel instances</span>
-</span></span><span class="line"><span class="cl"><span class="n">vec_env</span> <span class="o">=</span> <span class="n">gem</span><span class="o">.</span><span class="n">make_vec</span><span class="p">(</span><span class="s2">&#34;ta:GuessTheNumber-v0&#34;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vec_env</span> <span class="o">=</span> <span class="n">gem</span><span class="o">.</span><span class="n">make_vec</span><span class="p">(</span><span class="s2">&#34;game:GuessTheNumber-v0&#34;</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Reset all environments</span>
 </span></span><span class="line"><span class="cl"><span class="n">observations</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">vec_env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
@@ -259,7 +264,7 @@
             </div>
         </div>
     </footer>
-    
+
     
     
     
@@ -269,4 +274,5 @@
     <script src="/js/smooth-scroll.min.js"></script>
     <script src="/js/code-copy.min.js"></script>
 </body>
+
 </html>

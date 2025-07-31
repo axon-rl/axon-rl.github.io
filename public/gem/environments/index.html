@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axon-RL - Wiring General Intelligence Through Reinforcement Learning</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     
     <link rel="stylesheet" href="/css/styles.min.css">
 </head>
+
 <body>
     <header>
         <nav class="container">
             <div class="logo">
-                <a href="/" style="text-decoration: none; color: inherit;">💎 Axon-RL</a>
+                <a href="/" style="text-decoration: none; color: inherit;">Axon-RL</a>
             </div>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/gem/">GEM</a></li>
+                <li><a href="/gem/">💎 GEM</a></li>
             </ul>
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                 <span class="theme-icon">🌙</span>
@@ -43,7 +47,8 @@
             <li><a href="/gem/environments/#games">Games</a></li>
             <li><a href="/gem/environments/#math">Math</a></li>
             <li><a href="/gem/environments/#code">Code</a></li>
-            <li><a href="/gem/environments/#question-answering">Question-Answering</a></li>
+            <li><a href="/gem/environments/#question-answering">Question Answering</a></li>
+            <li><a href="/gem/environments/#reasoning-gym">Reasoning Gym</a></li>
         </ul>
 
         <h3>🛠️ Tools</h3>
@@ -53,7 +58,7 @@
             <li><a href="/gem/tools/#search-tool">Search Tool</a></li>
         </ul>
 
-        <h3>Features</h3>
+        <h3>✨ Features</h3>
         <ul>
             <li><a href="/gem/features/#wrappers">Wrappers</a></li>
             <li><a href="/gem/features/#vectorization">Vectorization</a></li>
@@ -83,7 +88,7 @@
 <p>This design closely follows the Gymnasium standard, making it easy to integrate with existing RL frameworks and tools.</p>
 <h2 id="games">Games</h2>
 <p>Interactive game environments including Sudoku, Minesweeper, Wordle, and more from the TextArena collection.</p>
-<p>We maintain local versions of many of the <a href="https://github.com/LeonGuertler/TextArena">TextArena</a> games.</p>
+<p>We maintain local versions of many of the <a href="https://github.com/LeonGuertler/TextArena">TextArena</a> games with <em>(i)</em> improved dense game reward design and <em>(ii)</em> compatible gym-style interface.</p>
 <h3 id="available-game-environments">Available Game Environments</h3>
 <table class="gem-table">
     <thead>
@@ -144,16 +149,16 @@
     </thead>
     <tbody>
         <tr>
-            <td><code>math:Math12k</code></td>
-            <td><a href="https://huggingface.co/datasets/axon-rl/MATH-12k">MATH-12k</a></td>
-        </tr>
-        <tr>
             <td><code>math:ASDIV2k</code></td>
             <td><a href="https://huggingface.co/datasets/axon-rl/ASDIV-2k">ASDIV-2k</a></td>
         </tr>
         <tr>
             <td><code>math:GSM8k</code></td>
             <td><a href="https://huggingface.co/datasets/axon-rl/GSM-8k">GSM-8k</a></td>
+        </tr>
+        <tr>
+            <td><code>math:Math12k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/MATH-12k">MATH-12k</a></td>
         </tr>
         <tr>
             <td><code>math:ORZ57k</code></td>
@@ -194,8 +199,13 @@
 <ul>
 <li><strong>Automatic Code Evaluation</strong>: Runs test cases in a secure sandbox environment</li>
 <li><strong>Test Case Validation</strong>: Compares agent-generated code against provided test cases</li>
-<li><strong>Sandbox Security</strong>: Safe execution environment that prevents harmful code execution</li>
-<li><strong>Dataset Flexibility</strong>: Compatible with any code dataset that includes problems and test cases</li>
+<li><strong>Sandbox Diversity</strong>: Two execution options are available.
+<ul>
+<li>Sandboxed environment using <a href="https://github.com/containers/bubblewrap">bubblewrap</a></li>
+<li>Implementation with Python&rsquo;s <code>subprocess</code> code.</li>
+</ul>
+</li>
+<li><strong>Dataset Diversity</strong>: Compatible with any code dataset that includes problems and test cases</li>
 </ul>
 <h2 id="question-answering">Question-Answering</h2>
 <p>QA environments designed for integrated search tool usage to train agents in information retrieval and reasoning.</p>
@@ -245,6 +255,8 @@
 <li><strong>HotpotQA</strong>: Multi-hop reasoning questions that require gathering information from multiple sources</li>
 <li><strong>RuleTaker</strong>: Logical reasoning environments with varying complexity levels (d0 through d5), where agents must apply rules to derive conclusions</li>
 </ul>
+<h2 id="reasoning-gym">Reasoning Gym</h2>
+<p>We include all tasks in <a href="https://github.com/open-thought/reasoning-gym">Reasoning Gym</a> in our package, which could be simply used by calling <code>make(rg:[sub_task_name])</code>.</p>
 
         </div>
 
@@ -260,7 +272,7 @@
             </div>
         </div>
     </footer>
-    
+
     
     
     
@@ -270,4 +282,5 @@
     <script src="/js/smooth-scroll.min.js"></script>
     <script src="/js/code-copy.min.js"></script>
 </body>
+
 </html>

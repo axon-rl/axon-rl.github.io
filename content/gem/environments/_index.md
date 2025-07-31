@@ -21,7 +21,7 @@ This design closely follows the Gymnasium standard, making it easy to integrate 
 
 Interactive game environments including Sudoku, Minesweeper, Wordle, and more from the TextArena collection.
 
-We maintain local versions of many of the [TextArena](https://github.com/LeonGuertler/TextArena) games.
+We maintain local versions of many of the [TextArena](https://github.com/LeonGuertler/TextArena) games with _(i)_ improved dense game reward design and _(ii)_ compatible gym-style interface.
 
 ### Available Game Environments
 
@@ -93,16 +93,16 @@ GEM's math environment class includes automatic answer parsing and checking and 
     </thead>
     <tbody>
         <tr>
-            <td><code>math:Math12k</code></td>
-            <td><a href="https://huggingface.co/datasets/axon-rl/MATH-12k">MATH-12k</a></td>
-        </tr>
-        <tr>
             <td><code>math:ASDIV2k</code></td>
             <td><a href="https://huggingface.co/datasets/axon-rl/ASDIV-2k">ASDIV-2k</a></td>
         </tr>
         <tr>
             <td><code>math:GSM8k</code></td>
             <td><a href="https://huggingface.co/datasets/axon-rl/GSM-8k">GSM-8k</a></td>
+        </tr>
+        <tr>
+            <td><code>math:Math12k</code></td>
+            <td><a href="https://huggingface.co/datasets/axon-rl/MATH-12k">MATH-12k</a></td>
         </tr>
         <tr>
             <td><code>math:ORZ57k</code></td>
@@ -149,8 +149,10 @@ GEM's code environment class automatically evaluates success by running the test
 
 - **Automatic Code Evaluation**: Runs test cases in a secure sandbox environment
 - **Test Case Validation**: Compares agent-generated code against provided test cases
-- **Sandbox Security**: Safe execution environment that prevents harmful code execution
-- **Dataset Flexibility**: Compatible with any code dataset that includes problems and test cases
+- **Sandbox Diversity**: Two execution options are available.
+  - Sandboxed environment using [bubblewrap](https://github.com/containers/bubblewrap)
+  - Implementation with Python's `subprocess` code.
+- **Dataset Diversity**: Compatible with any code dataset that includes problems and test cases
 
 ## Question-Answering
 
@@ -204,3 +206,7 @@ GEM's question-answering environments are designed to allow integrated search to
 - **Natural Questions**: Real-world questions that people ask search engines, requiring factual knowledge and reasoning
 - **HotpotQA**: Multi-hop reasoning questions that require gathering information from multiple sources
 - **RuleTaker**: Logical reasoning environments with varying complexity levels (d0 through d5), where agents must apply rules to derive conclusions
+
+## Reasoning Gym
+
+We include all tasks in [Reasoning Gym](https://github.com/open-thought/reasoning-gym) in our package, which could be simply used by calling `make(rg:[sub_task_name])`.

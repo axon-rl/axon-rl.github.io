@@ -14,7 +14,9 @@ GEM is a diverse collection of environments for training LLM agents in the era o
 
 ## Installation
 
-TO BE ADDED
+```bash
+pip install gem-llm
+```
 
 ## Quick Start
 
@@ -26,7 +28,7 @@ Environments can be initialized with `make()` (or `make_vec()`  for parallelizat
 import gem
 
 # Initialize the environment
-env = make("ta:GuessTheNumber-v0")
+env = make("game:GuessTheNumber-v0")
 
 # Reset the environment to generate the first observation
 observation, info = env.reset()
