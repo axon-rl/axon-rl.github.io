@@ -195,7 +195,7 @@ nav
 .logo
 {
     font-family: var(--font-family-base);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
     letter-spacing: 0;
@@ -214,7 +214,7 @@ nav
     color: var(--text-secondary);
     font-weight: var(--font-weight-normal);
     padding: var(--space-xs) var(--space-md);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-xl);
     font-family: var(--font-family-base);
 }
 
