@@ -5,9 +5,9 @@ type: "gem"
 layout: "single"
 ---
 
-# Overview
+## Overview
 
-Advanced GEM features, custom environments, and training. 
+Advanced GEM features, custom environments, and training.
 
 ## Custom Environments
 

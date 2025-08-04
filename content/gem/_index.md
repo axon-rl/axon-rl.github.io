@@ -6,6 +6,8 @@ layout: "single"
 aliases: ["/gem/overview/"]
 ---
 
+## Overview
+
 GEM is a diverse collection of environments for training LLM agents in the era of experience. The library includes Math, Code, general reasoning, and question-answering environments, as well as a suite of games (Mastermind, Minesweeper, Hangman, etc). GEM also features fully integrated python and search tool use.
 
 <div class="gem-callout">
