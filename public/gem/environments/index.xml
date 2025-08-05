@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>🌍 Environments on Axon-RL - Wiring General Intelligence Through Reinforcement Learning</title>
-    <link>http://localhost:1313/gem/environments/</link>
+    <link>http://localhost:53236/gem/environments/</link>
     <description>Recent content in 🌍 Environments on Axon-RL - Wiring General Intelligence Through Reinforcement Learning</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/gem/environments/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:53236/gem/environments/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
